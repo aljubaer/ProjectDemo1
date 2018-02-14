@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtVar = null;
     private TextView txtTexture = null;
     private TextView txtStatusN = null;
+
+    private EditText editTextN = null;
+    private EditText editTextP = null;
+    private EditText editTextK = null;
+    private EditText editTextS = null;
+    private EditText editTextZn = null;
+    private EditText editTextB = null;
+
+
 
     private String[] cropList = {"Boro rice", "T. Aus rice", "B. Aus rice", "T. Aman rice", "Wheat(Irrigated)",
                                 "Wheat(Rainfed)", "Hybrid maize", "Maize", "Potato", "Boro rice", "T. Aus rice",
@@ -46,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
         txtVar = (TextView) findViewById(R.id.txt_var);
         txtTexture = (TextView) findViewById(R.id.txt_texture);
         txtStatusN = (TextView) findViewById(R.id.txt_sN);
+
+        editTextN = findViewById(R.id.edtxt_N);
+        editTextP = findViewById(R.id.edtxt_P);
+        editTextK = findViewById(R.id.edtxt_K);
+        editTextS = findViewById(R.id.edtxt_S);
+        editTextZn = findViewById(R.id.edtxt_Zn);
+        editTextB = findViewById(R.id.edtxt_B);
 
     }
 

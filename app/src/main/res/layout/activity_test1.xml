@@ -88,6 +88,7 @@
                     >
 
                     <EditText
+                        android:id="@+id/edtxt_N"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
@@ -143,6 +144,7 @@
                     >
 
                     <EditText
+                        android:id="@+id/edtxt_P"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
@@ -196,6 +198,7 @@
                     >
 
                     <EditText
+                        android:id="@+id/edtxt_K"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
@@ -249,6 +252,7 @@
                     >
 
                     <EditText
+                        android:id="@+id/edtxt_S"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
@@ -303,6 +307,7 @@
                     >
 
                     <EditText
+                        android:id="@+id/edtxt_Zn"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
@@ -356,6 +361,7 @@
                     >
 
                     <EditText
+                        android:id="@+id/edtxt_B"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
