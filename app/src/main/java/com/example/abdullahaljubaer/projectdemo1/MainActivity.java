@@ -51,21 +51,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectCrop (View view){
 
-        searchableDialog1 = new CustomSearchableDialog(MainActivity.this, cropList, mAlertDialog, txtCropName);
-        String val = "";
+        searchableDialog1 = new CustomSearchableDialog(MainActivity.this, cropList, mAlertDialog, txtCropName, 1);
+
     }
 
 
     public void selectVar (View view){
 
-        CustomSearchableDialog searchableDialog = new CustomSearchableDialog(MainActivity.this, varList, mAlertDialog, txtVar);
+        CustomSearchableDialog searchableDialog = new CustomSearchableDialog(MainActivity.this,
+                varList, mAlertDialog, txtVar, 2);
         //String val = searchableDialog.getSelectedText();
 
     }
 
     public void selectTexture (View view) {
 
-        new CustomSearchableDialog(MainActivity.this, textureList, mAlertDialog, txtTexture);
+        new CustomSearchableDialog(MainActivity.this, textureList, mAlertDialog, txtTexture, 2);
 
     }
 

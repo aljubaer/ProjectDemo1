@@ -44,13 +44,15 @@ public class CustomSearchableDialog {
     private String selectedText = "";
     private TextView textView = null;
     public ArrayList<String> a = null;
+    public int flag;
     
-    public CustomSearchableDialog (Context context, String[] values, AlertDialog dialog, TextView v){
+    public CustomSearchableDialog (Context context, String[] values, AlertDialog dialog, TextView v, int flag){
 
         this.dialog = dialog;
         this.context = context;
         this.values = values;
         this.textView = v;
+        this.flag = flag;
         createView();
 
     }
@@ -82,71 +84,11 @@ public class CustomSearchableDialog {
                                                     selectedText = currentValueList.get(position);
                                                 else selectedText = values[position];
                                                 textView.setText(selectedText);
-                                                BackGroundTask backGroundTask = new BackGroundTask(context);
-                                                backGroundTask.execute("getVariations", selectedText);
-                                                /*
-                                                String regUrl = Config.DATA_URL;
-                                                String method = (String) "getVariations";
-                                                String text = "";
-
-                                                if (method.equals("getVariations")){
-                                                    String cropName = (String) selectedText;
-
-                                                    try {
-                                                        URL url = new URL(regUrl);
-                                                        HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-                                                        httpURLConnection.setRequestMethod("POST");
-                                                        httpURLConnection.setDoOutput(true);
-                                                        httpURLConnection.setDoInput(true);
-                                                        OutputStream outputStream = httpURLConnection.getOutputStream();
-                                                        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-
-                                                        String data = URLEncoder.encode(Config.TAG_CROP_NAME, "UTF-8")+"="+URLEncoder.encode(cropName, "UTF-8");
-
-                                                        bufferedWriter.write(data);
-                                                        bufferedWriter.flush();
-                                                        bufferedWriter.close();
-                                                        outputStream.close();
-                                                        int statusCode = httpURLConnection.getResponseCode();
-                                                        if (statusCode == 200) {
-                                                            InputStream inputStream = httpURLConnection.getInputStream();
-                                                            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-                                                            StringBuilder sb = new StringBuilder();
-                                                            String line;
-
-                                                            while ((line = reader.readLine()) != null)
-                                                                sb.append(line).append("\n");
-
-                                                            text = sb.toString();
-                                                            System.out.println(text);
-                                                            reader.close();
-                                                            inputStream.close();
-                                                            httpURLConnection.disconnect();
-                                                        }
-
-                                                    } catch (Exception e) {
-                                                        System.out.printf("NO");
-                                                        e.printStackTrace();
-                                                    }
-                                                    if(text != null) {
-                                                        JSONArray jsonArray = null;
-
-                                                        try {
-                                                            jsonArray = new JSONArray(text);
-
-                                                            JSONObject jsonObject;
-
-                                                            for(int i = 0; i<jsonArray.length(); i++) {
-                                                                jsonObject = jsonArray.getJSONObject(i);
-                                                                a.add(jsonObject.getString(Config.TAG_CROP_VARIATION));
-                                                            }
-                                                        }
-                                                        catch (Exception e) {
-                                                            e.printStackTrace();
-                                                        }
-                                                    }
+                                                if (flag == 1){
+                                                    BackGroundTask backGroundTask = new BackGroundTask(context);
+                                                    backGroundTask.execute("getVariations", selectedText);
                                                 }
-                                                */
+
                                             }
                                         }
         );

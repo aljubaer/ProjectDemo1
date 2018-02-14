@@ -58,38 +58,42 @@ public class BackGroundTask extends AsyncTask {
 
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                 int statusCode = httpURLConnection.getResponseCode();
                 if (statusCode == 200) {
 
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
                     StringBuilder sb = new StringBuilder();
                     String line;
 
-                    while ((line = reader.readLine()) != null)
+                    while ((line = bufferedReader.readLine()) != null)
                         sb.append(line).append("\n");
 
                     text = sb.toString();
                     bufferedWriter.close();
+                    bufferedReader.close();
+                    inputStream.close();
+                    httpURLConnection.disconnect();
                 }
 
             } catch (MalformedURLException e) {
                 System.out.printf("NO");
                 e.printStackTrace();
             } catch (IOException e) {
+                System.out.println("Never");
                 e.printStackTrace();
             }
             if(text != null) {
-                JSONArray jsonArray = null;
+                //JSONArray jsonArray = null;
 
                 try {
-                    jsonArray = new JSONArray(text);
+                    JSONObject jsonObject = new JSONObject(text);
+                    JSONArray jsonArray = jsonObject.getJSONArray("result");
 
-                    JSONObject jsonObject;
-                    System.out.println("HHHHH- " + jsonArray.length());
-
-                    for(int i = 0; i<jsonArray.length(); i++) {
-                        jsonObject = jsonArray.getJSONObject(i);
-                        arrayList.add(jsonObject.getString(Config.TAG_CROP_VARIATION));
+                    for(int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                        arrayList.add(jsonObject1.getString(Config.TAG_CROP_VARIATION));
                     }
                 }
                 catch (Exception e) {
@@ -97,8 +101,9 @@ public class BackGroundTask extends AsyncTask {
                 }
             }
         }
-        System.out.println("ffgf" + arrayList.size());
-        MainActivity.varList = (String[]) arrayList.toArray();
+        System.out.println(arrayList.size());
+        //MainActivity.varList = new String[arrayList.size()];
+        MainActivity.varList = arrayList.toArray(new String[arrayList.size()]);
 
         return text;
     }

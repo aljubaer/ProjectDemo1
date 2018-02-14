@@ -7,7 +7,7 @@ package com.example.abdullahaljubaer.projectdemo1;
 public class Config {
 
     //JSON URL
-    public static final String DATA_URL = "http://172.16.33.63/tutorial/get_all_variations.php";
+    public static final String DATA_URL = "http://172.16.33.175/phps/get_all_variations.php";
 
     //Tags used in the JSON String
     public static final String TAG_CROP_NAME = "crop_name";
