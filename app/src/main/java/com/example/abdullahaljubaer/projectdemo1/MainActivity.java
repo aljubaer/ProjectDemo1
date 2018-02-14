@@ -58,13 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectVar (View view){
 
-        ArrayList<String> a = searchableDialog1.a;
-        if (a != null) {
-            varList = new String[a.size()];
-
-            varList = (String[]) a.toArray();
-        }
-
         CustomSearchableDialog searchableDialog = new CustomSearchableDialog(MainActivity.this, varList, mAlertDialog, txtVar);
         //String val = searchableDialog.getSelectedText();
 

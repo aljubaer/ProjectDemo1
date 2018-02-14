@@ -85,6 +85,7 @@ public class BackGroundTask extends AsyncTask {
                     jsonArray = new JSONArray(text);
 
                     JSONObject jsonObject;
+                    System.out.println("HHHHH- " + jsonArray.length());
 
                     for(int i = 0; i<jsonArray.length(); i++) {
                         jsonObject = jsonArray.getJSONObject(i);
@@ -96,7 +97,7 @@ public class BackGroundTask extends AsyncTask {
                 }
             }
         }
-        System.out.println(arrayList.size());
+        System.out.println("ffgf" + arrayList.size());
         MainActivity.varList = (String[]) arrayList.toArray();
 
         return text;
