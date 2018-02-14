@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                                 "B. Aus rice", "T. Aman rice", "Wheat(Irrigated)",
                                 "Wheat(Rainfed)", "Hybrid maize", "Maize", "Potato"};
 
-    private String[] varList = {"BRRI dhan 28", "BRRI dhan 28", "BRRI dhan 28", "BRRI dhan 28", "Binadhan"};
+    static String[] varList = {"BRRI dhan 28", "BRRI dhan 28", "BRRI dhan 28", "BRRI dhan 28", "Binadhan"};
 
     private String[] textureList = {"Sandy", "Sandy-Loamy", "Loamy", "Loamy-Clayey", "Clayey"};
 

@@ -82,6 +82,9 @@ public class CustomSearchableDialog {
                                                     selectedText = currentValueList.get(position);
                                                 else selectedText = values[position];
                                                 textView.setText(selectedText);
+                                                BackGroundTask backGroundTask = new BackGroundTask(context);
+                                                backGroundTask.execute("getVariations", selectedText);
+                                                /*
                                                 String regUrl = Config.DATA_URL;
                                                 String method = (String) "getVariations";
                                                 String text = "";
@@ -143,6 +146,7 @@ public class CustomSearchableDialog {
                                                         }
                                                     }
                                                 }
+                                                */
                                             }
                                         }
         );

@@ -96,6 +96,8 @@ public class BackGroundTask extends AsyncTask {
                 }
             }
         }
+        System.out.println(arrayList.size());
+        MainActivity.varList = (String[]) arrayList.toArray();
 
         return text;
     }
