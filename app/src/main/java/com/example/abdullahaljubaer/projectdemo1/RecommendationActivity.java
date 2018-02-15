@@ -58,18 +58,7 @@ public class RecommendationActivity extends AppCompatActivity {
         editTextZn = findViewById(R.id.edtxt_Zn);
         editTextB = findViewById(R.id.edtxt_B);
 
-        BackGroundTask bt = new BackGroundTask(RecommendationActivity.this);
-        bt.execute("getRecommendation",
-                txtCropName.getText().toString(),
-                txtVar.getText().toString(),
-                txtTexture.getText().toString(),
-                editTextN.getText().toString(),
-                editTextP.getText().toString(),
-                editTextK.getText().toString(),
-                editTextS.getText().toString(),
-                editTextZn.getText().toString(),
-                editTextB.getText().toString()
-                );
+
 
     }
 }

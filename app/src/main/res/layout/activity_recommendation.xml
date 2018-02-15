@@ -11,9 +11,10 @@
 
 
     <LinearLayout
+        android:id="@+id/LL_LA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/back"
+        android:background="@drawable/back_round"
         android:orientation="horizontal"
         android:padding="10dp"
         >
@@ -50,5 +51,210 @@
         </Spinner>
 
     </LinearLayout>
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LL_LA"
+        android:layout_marginTop="15dp"
+        android:stretchColumns="*"
+        android:background="@drawable/back_round"
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Nutrient"
+                android:padding="10dp"
+                android:textSize="24sp"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:background="@drawable/top_left_back"
+                />
+
+            <Spinner
+                android:id="@+id/spn_unit_nutrient"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/top_right_back"
+                >
+            </Spinner>
+
+        </TableRow>
+
+
+
+        <View
+            android:layout_height="4dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/back_full_red"
+            />
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Nitrogen"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:background="@drawable/back"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLength="7"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:background="@drawable/back"
+                />
+
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Phosphorus"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:background="@drawable/back"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLength="7"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:background="@drawable/back"
+                />
+
+
+        </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Potassium"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:background="@drawable/back"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLength="7"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:background="@drawable/back"
+                />
+
+        </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Sulphur"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:background="@drawable/back"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLength="7"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:background="@drawable/back"
+                />
+
+
+        </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Zinc"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:background="@drawable/back"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLength="7"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:background="@drawable/back"
+                />
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Boron"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:background="@drawable/bottom_left_back"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLength="7"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:background="@drawable/bottom_right_back"
+                />
+
+        </TableRow>
+
+
+    </TableLayout>
 
 </RelativeLayout>
