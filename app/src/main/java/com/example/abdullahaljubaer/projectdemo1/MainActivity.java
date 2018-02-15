@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test1);
 
 
-        txtCropName =(TextView) findViewById(R.id.txt_cropname);
-        txtVar = (TextView) findViewById(R.id.txt_var);
-        txtTexture = (TextView) findViewById(R.id.txt_texture);
-        txtStatusN = (TextView) findViewById(R.id.txt_sN);
+        txtCropName = findViewById(R.id.txt_cropname);
+        txtVar = findViewById(R.id.txt_var);
+        txtTexture = findViewById(R.id.txt_texture);
+        txtStatusN = findViewById(R.id.txt_sN);
 
         editTextN = findViewById(R.id.edtxt_N);
         editTextP = findViewById(R.id.edtxt_P);
@@ -94,6 +94,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createRecommendation (View view){
+
+        BackGroundTask bt = new BackGroundTask(MainActivity.this);
+        bt.execute("getRecommendation",
+                txtCropName.getText().toString(),
+                txtVar.getText().toString(),
+                txtTexture.getText().toString(),
+                editTextN.getText().toString(),
+                editTextP.getText().toString(),
+                editTextK.getText().toString(),
+                editTextS.getText().toString(),
+                editTextZn.getText().toString(),
+                editTextB.getText().toString()
+        );
 
         startActivity(new Intent(this, RecommendationActivity.class));
 

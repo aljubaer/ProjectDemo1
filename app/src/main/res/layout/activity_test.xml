@@ -28,7 +28,7 @@
                 android:textSize="18sp"
                 android:onClick="selectCrop"
                 android:drawableRight="@drawable/ic_arrow_drop_down"
-                android:background="@drawable/back"
+                android:background="@drawable/back_round"
                 android:focusable="true"
                 />
 
@@ -42,7 +42,7 @@
                 android:textSize="18sp"
                 android:onClick="selectVar"
                 android:drawableRight="@drawable/ic_arrow_drop_down"
-                android:background="@drawable/back"
+                android:background="@drawable/back_round"
                 android:focusable="true"
                 />
 
@@ -56,7 +56,7 @@
                 android:textSize="18sp"
                 android:onClick="selectTexture"
                 android:drawableRight="@drawable/ic_arrow_drop_down"
-                android:background="@drawable/back"
+                android:background="@drawable/back_round"
                 android:focusable="true"
                 />
 

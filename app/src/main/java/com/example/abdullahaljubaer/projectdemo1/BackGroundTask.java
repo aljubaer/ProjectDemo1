@@ -36,15 +36,17 @@ public class BackGroundTask extends AsyncTask {
     @Override
     protected Object doInBackground(Object[] objects) {
 
-        String regUrl = Config.DATA_URL;
         String method = (String) objects[0];
         String text = "";
 
         if (method.equals("getVariations")){
+
+            String urlS = Config.DATA_URL + Config.FILE_ALL_VARIATION;
+
             String cropName = (String) objects[1];
 
             try {
-                URL url = new URL(regUrl);
+                URL url = new URL(urlS);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoInput(true);
@@ -103,6 +105,8 @@ public class BackGroundTask extends AsyncTask {
 
         if (method.equals("getRecommendation")) {
 
+            String urlS = Config.DATA_URL + Config.FILE_SOIL_TEST;
+
             String cropName = (String) objects[1];
             String cropVar = (String) objects[2];
             String texture = (String) objects[3];
@@ -115,7 +119,7 @@ public class BackGroundTask extends AsyncTask {
 
 
             try {
-                URL url = new URL(regUrl);
+                URL url = new URL(urlS);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoInput(true);
@@ -164,13 +168,15 @@ public class BackGroundTask extends AsyncTask {
             }
             if (text != null) {
                 JSONArray jsonArray = null;
-
+                String[] v = {"N", "P", "K", "S", "Zn", "B"};
                 try {
-                    jsonArray = new JSONArray(text);
+                    JSONObject jsonObject = new JSONObject(text);
+                    jsonArray = jsonObject.getJSONArray("result");
 
-                    for (int i = 0; i < jsonArray.length(); i++) {
+                    for(int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                        arrayList.add(jsonObject1.getString(Config.TAG_CROP_VARIATION));
+                        arrayList.add(jsonObject1.getString(v[i]));
+                        System.out.println(arrayList.get(i));
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
