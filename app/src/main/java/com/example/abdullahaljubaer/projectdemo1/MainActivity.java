@@ -9,8 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,12 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private String[] cropList = {"Boro rice", "T. Aus rice", "B. Aus rice", "T. Aman rice", "Wheat(Irrigated)",
-                                "Wheat(Rainfed)", "Hybrid maize", "Maize", "Potato", "Boro rice", "T. Aus rice",
+    static String[] cropList = {"Boro rice", "T. Aus rice", "B. Aus rice", "T. Aman rice", "Wheat (Irrigated)",
+                                "Wheat (Rainfed)", "Hybrid maize", "Maize", "Potato", "Boro rice", "T. Aus rice",
                                 "B. Aus rice", "T. Aman rice", "Wheat(Irrigated)",
                                 "Wheat(Rainfed)", "Hybrid maize", "Maize", "Potato"};
 
     static String[] varList = {"BRRI dhan 28", "BRRI dhan 28", "BRRI dhan 28", "BRRI dhan 28", "Binadhan"};
+
+    static List<String> ls = null;
 
     private String[] textureList = {"Sandy", "Sandy-Loamy", "Loamy", "Loamy-Clayey", "Clayey"};
 
@@ -63,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         editTextS = findViewById(R.id.edtxt_S);
         editTextZn = findViewById(R.id.edtxt_Zn);
         editTextB = findViewById(R.id.edtxt_B);
+
+
 
     }
 
@@ -108,7 +115,27 @@ public class MainActivity extends AppCompatActivity {
                 editTextB.getText().toString()
         );
 
-        startActivity(new Intent(this, RecommendationActivity.class));
+        String[] v = {"N", "P", "K", "S", "Zn", "B"};
+
+        Intent intent = new Intent(this, RecommendationActivity.class);
+
+        int len = 0;
+
+        try{
+            len = ls.size();
+
+            for (int i = 0; i < len; i++){
+                intent.putExtra(v[i], ls.get(i));
+            }
+
+            startActivity(intent);
+
+        } catch (Exception e){
+            e.getMessage();
+        }
+
+
+        //startActivity(intent);
 
     }
 }

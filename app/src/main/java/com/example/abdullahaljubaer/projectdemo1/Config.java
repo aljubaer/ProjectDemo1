@@ -7,7 +7,7 @@ package com.example.abdullahaljubaer.projectdemo1;
 public class Config {
 
     //JSON URL
-    public static final String DATA_URL = "http://172.16.34.198/phps/";
+    public static final String DATA_URL = "http://172.16.32.16/phps/";
     public static final String FILE_ALL_VARIATION = "get_all_variations.php";
     public static final String FILE_SOIL_TEST = "soilTest.php";
 

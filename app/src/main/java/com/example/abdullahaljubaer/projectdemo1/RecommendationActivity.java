@@ -25,12 +25,12 @@ public class RecommendationActivity extends AppCompatActivity {
     private TextView txtTexture = null;
     private TextView txtStatusN = null;
 
-    private EditText editTextN = null;
-    private EditText editTextP = null;
-    private EditText editTextK = null;
-    private EditText editTextS = null;
-    private EditText editTextZn = null;
-    private EditText editTextB = null;
+    private TextView txtN = null;
+    private TextView txtP = null;
+    private TextView txtK = null;
+    private TextView txtS = null;
+    private TextView txtZn = null;
+    private TextView txtB = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +45,24 @@ public class RecommendationActivity extends AppCompatActivity {
         spnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerUnitLand.setAdapter(spnAdapter);
 
-        txtCropName =(TextView) findViewById(R.id.txt_cropname);
-        txtVar = (TextView) findViewById(R.id.txt_var);
-        txtTexture = (TextView) findViewById(R.id.txt_texture);
-        txtStatusN = (TextView) findViewById(R.id.txt_sN);
+        txtN = findViewById(R.id.txt_nuN);
+        txtP = findViewById(R.id.txt_nuP);
+        txtK = findViewById(R.id.txt_nuK);
+        txtS = findViewById(R.id.txt_nuS);
+        txtZn = findViewById(R.id.txt_nuZn);
+        txtB = findViewById(R.id.txt_nuB);
 
+        Bundle extras = getIntent().getExtras();
 
-        editTextN = findViewById(R.id.edtxt_N);
-        editTextP = findViewById(R.id.edtxt_P);
-        editTextK = findViewById(R.id.edtxt_K);
-        editTextS = findViewById(R.id.edtxt_S);
-        editTextZn = findViewById(R.id.edtxt_Zn);
-        editTextB = findViewById(R.id.edtxt_B);
+        String[] v = {"N", "P", "K", "S", "Zn", "B"};
 
-
-
+        if (extras != null){
+            txtN.setText(extras.getString(v[0]));
+            txtP.setText(extras.getString(v[1]));
+            txtK.setText(extras.getString(v[2]));
+            txtS.setText(extras.getString(v[3]));
+            txtZn.setText(extras.getString(v[4]));
+            txtB.setText(extras.getString(v[5]));
+        }
     }
 }

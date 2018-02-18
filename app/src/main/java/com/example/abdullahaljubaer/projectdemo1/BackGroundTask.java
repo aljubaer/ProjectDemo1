@@ -2,8 +2,6 @@ package com.example.abdullahaljubaer.projectdemo1;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ABDULLAH AL JUBAER on 23-01-18.
@@ -29,6 +28,7 @@ public class BackGroundTask extends AsyncTask {
 
     private Context context;
     private ArrayList<String> arrayList = new ArrayList<>();
+    private List<String> resultList;
 
     public BackGroundTask(Context context) {
         this.context = context;
@@ -176,11 +176,12 @@ public class BackGroundTask extends AsyncTask {
                     for(int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                         arrayList.add(jsonObject1.getString(v[i]));
-                        System.out.println(arrayList.get(i));
+                        //System.out.println(arrayList.get(i));
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                return arrayList;
             }
         }
 
@@ -193,7 +194,10 @@ public class BackGroundTask extends AsyncTask {
 
     @Override
     protected void onPostExecute(Object o) {
-        Toast.makeText(context, (String) o, Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, (String) o, Toast.LENGTH_LONG).show();
+        if (o instanceof List){
+            MainActivity.ls = (List<String>) o;
+        }
     }
 
     @Override
@@ -201,8 +205,8 @@ public class BackGroundTask extends AsyncTask {
         super.onProgressUpdate(values);
     }
 
-    public ArrayList getArrayList(){
-        return arrayList;
+    public List getArrayList(){
+        return resultList;
     }
 
 }
