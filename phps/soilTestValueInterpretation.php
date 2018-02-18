@@ -44,4 +44,24 @@
 	
 	}
 
+
+	function getTexture($name, $texture){
+		require_once('initialize.php');
+		$conn = initialize();
+		$query = "SELECT `land_type` FROM `crop_group` WHERE `crop_name` = '$name' " ;
+		//echo $query."S <br>";
+		$res = mysqli_query($conn, $query);
+		$row = mysqli_fetch_assoc($res);
+
+		$land = $row['land_type'];
+
+		$query1 = "SELECT `texture_class` FROM `texture_class` WHERE `texture` = '$texture' AND `land_type` = '$land' " ;
+
+		$res1 = mysqli_query($conn, $query1);
+		$row1 = mysqli_fetch_assoc($res1);
+
+		return $row1['texture_class'];
+	}
+
+
 ?>
