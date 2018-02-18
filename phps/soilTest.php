@@ -1,5 +1,15 @@
 <?php
 
+	$crop_name = $_POST["crop_name"];
+	$crop_variation = $_POST["crop_variation"];
+	$texture = $_POST["texture"];
+	$_n = $_POST["N"];
+	$_p = $_POST["P"];
+	$_k = $_POST["K"];
+	$_s = $_POST["S"];
+	$_zn = $_POST["Zn"];
+	$_b = $_POST["B"];
+
 
 	function getNutrient($Uf, $Ci, $Cs, $St, $Ls){
 		if($Uf === 0)return 0.0;
@@ -38,9 +48,12 @@
 			//echo $nutrients[$i]."<br>";
 			$ans = calc('A', $nutrients[$i], 'Wheat (Irrigated)',$soilValue[$i]);
 			//echo $ans."<br>";
-			$json[$nutrients[$i]] = $ans;
+			
+			//$json[$nutrients[$i]] = $ans;
+
+			array_push($json, array($nutrients[$i]=>$ans));
 		}
-		$jsonFile = json_encode($json);
+		$jsonFile = json_encode(array('result'=>$json));
 		return $jsonFile;	
 	}
 
