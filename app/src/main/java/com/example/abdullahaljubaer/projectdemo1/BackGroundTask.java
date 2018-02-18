@@ -41,7 +41,7 @@ public class BackGroundTask extends AsyncTask {
 
         if (method.equals("getVariations")){
 
-            String urlS = Config.DATA_URL + Config.FILE_ALL_VARIATION;
+            String urlS = Config.DATA_URL + Config.FILE_ALL_CROP_VARIATION;
 
             String cropName = (String) objects[1];
 
@@ -183,6 +183,108 @@ public class BackGroundTask extends AsyncTask {
                 }
                 return arrayList;
             }
+        }
+
+
+        if (method.equals("getAllCrops")){
+
+            String urlS = Config.DATA_URL + Config.FILE_ALL_CROPS;
+
+            try {
+                URL url = new URL(urlS);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                int statusCode = httpURLConnection.getResponseCode();
+                if (statusCode == 200) {
+
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+
+                    while ((line = bufferedReader.readLine()) != null)
+                        sb.append(line).append("\n");
+
+                    text = sb.toString();
+                    bufferedReader.close();
+                    inputStream.close();
+                    httpURLConnection.disconnect();
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(text != null) {
+                //JSONArray jsonArray = null;
+
+                try {
+                    JSONObject jsonObject = new JSONObject(text);
+                    JSONArray jsonArray = jsonObject.getJSONArray("result");
+
+                    for(int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                        arrayList.add(jsonObject1.getString("crop_name"));
+                    }
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            MainActivity.cropList = arrayList.toArray(new String[arrayList.size()]);
+        }
+
+
+        if (method.equals("getAllTextures")){
+
+            String urlS = Config.DATA_URL + Config.FILE_ALL_TEXTURES;
+
+            try {
+                URL url = new URL(urlS);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                int statusCode = httpURLConnection.getResponseCode();
+                if (statusCode == 200) {
+
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+
+                    while ((line = bufferedReader.readLine()) != null)
+                        sb.append(line).append("\n");
+
+                    text = sb.toString();
+                    bufferedReader.close();
+                    inputStream.close();
+                    httpURLConnection.disconnect();
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(text != null) {
+                //JSONArray jsonArray = null;
+
+                try {
+                    JSONObject jsonObject = new JSONObject(text);
+                    JSONArray jsonArray = jsonObject.getJSONArray("result");
+
+                    for(int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                        arrayList.add(jsonObject1.getString("texture"));
+                    }
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            MainActivity.textureList = arrayList.toArray(new String[arrayList.size()]);
         }
 
         return text;

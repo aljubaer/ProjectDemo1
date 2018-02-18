@@ -8,8 +8,10 @@ public class Config {
 
     //JSON URL
     public static final String DATA_URL = "http://172.16.32.16/phps/";
-    public static final String FILE_ALL_VARIATION = "get_all_variations.php";
+    public static final String FILE_ALL_CROP_VARIATION = "get_all_variations.php";
     public static final String FILE_SOIL_TEST = "soilTest.php";
+    public static final String FILE_ALL_CROPS = "get_all_crops.php";
+    public static final String FILE_ALL_TEXTURES = "get_all_textures.php";
 
 
     //Tags used in the JSON String

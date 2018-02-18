@@ -31,16 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    static String[] cropList = {"Boro rice", "T. Aus rice", "B. Aus rice", "T. Aman rice", "Wheat (Irrigated)",
-                                "Wheat (Rainfed)", "Hybrid maize", "Maize", "Potato", "Boro rice", "T. Aus rice",
-                                "B. Aus rice", "T. Aman rice", "Wheat(Irrigated)",
-                                "Wheat(Rainfed)", "Hybrid maize", "Maize", "Potato"};
+    static String[] cropList = null;
 
-    static String[] varList = {"BRRI dhan 28", "BRRI dhan 28", "BRRI dhan 28", "BRRI dhan 28", "Binadhan"};
+    static String[] varList = {""};
 
     static List<String> ls = null;
 
-    private String[] textureList = {"Sandy", "Sandy-Loamy", "Loamy", "Loamy-Clayey", "Clayey"};
+    static String[] textureList = {""};
 
     private String[] statusList = {"Very low", "Low", "Medium", "Optimum", "High", "Very high"};
 
@@ -69,7 +66,10 @@ public class MainActivity extends AppCompatActivity {
         editTextZn = findViewById(R.id.edtxt_Zn);
         editTextB = findViewById(R.id.edtxt_B);
 
-
+        BackGroundTask bt = new BackGroundTask(MainActivity.this);
+        bt.execute("getAllCrops");
+        BackGroundTask bt1 = new BackGroundTask(MainActivity.this);
+        bt1.execute("getAllTextures");
 
     }
 
