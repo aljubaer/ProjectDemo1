@@ -1,9 +1,12 @@
 <?php
 	
-	function getUpperLimit($nutrient, $cropName, $interpretation){
+	function getUpperLimit($nutrient, $cropName, $cropClass, $interpretation){ //Uf
 		require_once('initialize.php');
 		$conn = initialize();
-		$query = "SELECT `upper_limit` FROM `soil_analysis_interpretation` WHERE `nutrient` = '$nutrient' AND `crop_name` = '$cropName' and `interpretation` = '$interpretation' " ;
+		$query = "SELECT `upper_limit` FROM `soil_analysis_interpretation` WHERE `nutrient` = '$nutrient' 
+					AND `crop_name` = '$cropName' 
+					AND `interpretation` = '$interpretation' 
+					AND `crop_class` = '$cropClass' " ;
 	
 		//echo $query.'<br>';
 
@@ -15,11 +18,14 @@
 
 		return $row['upper_limit'];
 	}
-	function getInterval($nutrient, $cropName, $interpretation){ //Ci
+	function getInterval($nutrient, $cropName, $cropClass, $interpretation){ //Ci
 		
 		require_once('initialize.php');
 		$conn = initialize();
-		$query = "SELECT `interval` FROM `soil_analysis_interpretation` WHERE `nutrient` = '$nutrient' AND `crop_name` = '$cropName' and `interpretation` = '$interpretation' " ;
+		$query = "SELECT `interval` FROM `soil_analysis_interpretation` WHERE `nutrient` = '$nutrient' 
+					AND `crop_name` = '$cropName' 
+					AND `interpretation` = '$interpretation'
+					AND `crop_class` = '$cropClass'  " ;
 	
 		//echo $query.'<br>';
 

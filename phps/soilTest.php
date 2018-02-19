@@ -2,7 +2,7 @@
 
 	$crop_name = $_POST["crop_name"];
 	$crop_variation = $_POST["crop_variation"];
-	$texture = $_POST["texture"];
+	$_texture = $_POST["texture"];
 	$_n = $_POST["N"];
 	$_p = $_POST["P"];
 	$_k = $_POST["K"];
@@ -19,7 +19,11 @@
 
 
 
-	function calc($texture, $nutrient, $cropName, $St){
+	function calc($texture, $nutrient, $cropName, $cropVariation, $St){
+
+		require_once('get_crop_class.php');
+		$class = getCropClass($cropName, $cropVariation);
+
 		//echo $nutrient.' '.$aez.' '.$cropPattern.' '.$cropName."<br>";
 		require_once('soilTestValueInterpretation.php');
 		$interpretation = getInterPretation($nutrient, $St, $texture);
@@ -29,24 +33,29 @@
 		$Ls = getLowerLimit($nutrient, $interpretation, $texture);
 
 		require_once('soilAnalysisInterpretation.php');
-		$Uf = getUpperLimit($nutrient, $cropName, $interpretation);
-		$Ci = getInterval($nutrient, $cropName, $interpretation);
+		$Uf = getUpperLimit($nutrient, $cropName, $class, $interpretation);
+		$Ci = getInterval($nutrient, $cropName, $class, $interpretation);
 		//echo $Uf."  uf ". $Ci. " Ci ". $Cs." Cs ".$Ls." Ls ".$St." St <br>";
 		$val = getNutrient($Uf, $Ci, $Cs, $St, $Ls);
 		return $val;
 
 	}
 
-	function factory(){
+
+	function factory($texture, $soilValue, $cropN, $cropV){
+
+		require_once('soilTestValueInterpretation.php');
+
+		$texture = getTexture($cropN, $texture);
 		
 		$string = "N P K S Zn B";
 		$nutrients = explode(" ", $string);
-		$soilValue = array(.1, 18, .15, 10, 1.0, 0.2);
+		//$soilValue = array(.1, 18, .15, 10, 1.0, 0.2);
 		$size = sizeof($nutrients);
 		$json = array();
 		for($i = 0; $i < $size; $i++){
 			//echo $nutrients[$i]."<br>";
-			$ans = calc('A', $nutrients[$i], 'Wheat (Irrigated)',$soilValue[$i]);
+			$ans = calc($texture, $nutrients[$i], $cropN, $cropV, $soilValue[$i]);
 			//echo $ans."<br>";
 			
 			//$json[$nutrients[$i]] = $ans;
@@ -89,7 +98,9 @@
 	*/
 	
 	//calc('C', 'N', 'Wheat (Irrigated)', .1);
-	$jsonFile = factory();
+	$soilValue = array(floatval($_n), floatval($_p), floatval($_k), floatval($_s), floatval($_zn), floatval($_b));
+	//$jsonFile = factory('A', $soilValue, "Wheat (Irrigated)", "Sourav (BARI Gom-19)");
+	$jsonFile = factory($_texture, $soilValue, $crop_name, $crop_variation);
 	//createHTML($jsonFile);
 	echo $jsonFile;
 
